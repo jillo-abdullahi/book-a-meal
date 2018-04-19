@@ -16,11 +16,11 @@ h1,h2,h3,h4,h5,h6,span {
   font-weight: 700;
 }
 
-/*Top Nav styling*/
+/*top Nav styling*/
 .topnav {
   overflow: hidden;
   background-color: #fff;
-  border-bottom: 1px solid #34495e;
+  border-bottom: 3px solid #34495e;
 }
 
 .topnav a {
@@ -50,7 +50,6 @@ h1,h2,h3,h4,h5,h6,span {
   display: none;
 }
 /*Styling for landing page*/
-
 .intro-header {
   width:400px;
   margin: auto;
@@ -61,6 +60,7 @@ h1,h2,h3,h4,h5,h6,span {
   text-align: center;
 
 }
+
 
 @media screen and (max-width: 600px) {
   .topnav a:not(:first-child) {display: none;}
@@ -85,7 +85,7 @@ h1,h2,h3,h4,h5,h6,span {
   }
 }
 
-/*Styling for landing page button*/
+/*Styling for buttons*/
 .button {
   display: block;
   border-radius: 6px;
@@ -135,8 +135,8 @@ h1,h2,h3,h4,h5,h6,span {
   padding-bottom: 10px;
   margin-bottom: 0px;
   border-top: 1px solid #34495e;
-  position:absolute; /*Here's what sticks it*/
-  bottom:0;          /*to the bottom of the body/page*/
+  position:absolute; 
+  bottom:0;          
   left:0;  
 }
 
@@ -155,5 +155,40 @@ h1,h2,h3,h4,h5,h6,span {
 }
 #footer-nav li a:hover {
   color: #95a5a6;
-
+}
 /*Login form*/
+.login-intro-header {
+  width:400px;
+  margin: auto;
+  padding: 20px;
+  margin-top:10%;
+  background-color: rgb(245, 245, 245);
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  border-radius: 6px;
+
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+/*"Forgot password" text*/
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 600px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    
+}
