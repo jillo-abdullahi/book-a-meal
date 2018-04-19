@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book-A-Meal::Home</title>
+    <title>Book-A-Meal::Login</title>
     <link rel="shortcut icon" href="img/logo.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -14,34 +14,28 @@
 <div class="topnav" id="myTopnav">
   <a href="index.html" class="active"><b>Book-A-Meal</b></a>
   <a href="customer-registration.html" class="menu-item">Register</a>
-  <a href="login.html" class="menu-item">Login</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
+<div class="login-intro-header">
 
-<div class="login-form">
-  <form action="action_page.php">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
+    <form action="">
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
 
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+        <button class="button" type="submit"><span>Login</span></button>
+        <label>
+          <span>New here? <a href="customer-registration.html">Click here</a> to register.</span>
+        </label>
+        
+      </div>
+    </form>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
 </div>
 <div class="footer">
   <ul id="footer-nav">
