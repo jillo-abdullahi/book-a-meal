@@ -20,7 +20,7 @@ h1,h2,h3,h4,h5,h6,span {
 .topnav {
   overflow: hidden;
   background-color: #fff;
-  border-bottom: 3px solid #34495e;
+  border-bottom: 2px solid #34495e;
 }
 
 .topnav a {
@@ -30,11 +30,12 @@ h1,h2,h3,h4,h5,h6,span {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  
 }
 
 .topnav a.menu-item {
   float:right;
+  font-size: 17px;
 }
 
 .topnav a:hover {
@@ -44,6 +45,8 @@ h1,h2,h3,h4,h5,h6,span {
 .active {
   background-color: #fff;
   color: #000;
+  font-weight: 900;
+  font-size: 120%;
 }
 
 .topnav .icon {
@@ -225,4 +228,87 @@ span.psw {
   margin-bottom: 0px;
   border-top: 1px solid #34495e;
   margin-bottom: 0px;
+}
+
+/*Search Caterer Page*/
+.choose-caterer-intro-header {
+  width:90%;
+  margin: auto;
+  padding: 20px;
+  margin-top:15px;
+  margin-bottom: 15px;
+  background-color: rgb(245, 245, 245);
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  border-radius: 6px;
+}
+.choose-caterer-intro-header input[type=text] {
+  width: 180px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('../img/searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+.choose-caterer-intro-header input[type=text]:focus {
+    width: 50%;
+}
+.choose-caterer-intro-header button {
+  float: right;
+}
+
+@media screen and (max-width: 600px) {
+  .choose-caterer-intro-header {
+    display: block;
+
+  }
+
+}
+
+.popular-caterer-intro-header {
+  width:90%;
+  margin: auto;
+  overflow: hidden;
+  padding: 10px;
+  margin-top:15px;
+  margin-bottom: 15px;
+  background-color: rgb(245, 245, 245);
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  border-radius: 6px;
+  min-height: 300px;
+}
+
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border-radius: 6px;
+    margin: 7px;
+}
+
+div.gallery:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+    border-radius:6px;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+.popular {
+  float: left;
 }
