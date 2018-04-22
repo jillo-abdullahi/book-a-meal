@@ -173,7 +173,7 @@ h1,h2,h3,h4,h5,h6,span {
 
 
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], textarea,select{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -261,7 +261,9 @@ span.psw {
   background-color: rgb(245, 245, 245);
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   border-radius: 6px;
+  padding:10px;
 }
+
 .choose-caterer-intro-header input[type=text] {
   width: 180px;
   box-sizing: border-box;
@@ -383,11 +385,14 @@ div.desc {
   float: left;
   padding: 10px;
   margin: 0;
+  display: block;
 }
 
 .caterer-specs-intro-header {
   width:90%;
   margin: auto;
+  overflow: hidden;
+
   
 }
  .menu {
@@ -502,6 +507,37 @@ article .gallery {
   font-size: 14px;
   width: 150px;
 }
+
+.caterer-menu-items {
+  width:70%;
+  margin: auto;
+  overflow: hidden;
+  padding: 0;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  float:left;
+  /*height: 600px;
+  overflow: scroll;*/
+
+}
+
+.caterer-actions {
+  width:28%;
+  margin: auto;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  float: left;
+ }
+
+/*Caterer add item page*/
+.imgcontainer {
+  width: 40%;
+  margin: auto;
+  
+}
+ 
  
 
   /*footer section*/
