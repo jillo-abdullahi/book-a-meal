@@ -7,10 +7,7 @@ function myFunction() {
 	    }
 	}
 
-	function addToCart() {
-		var order_item = document.getElementById("item").innerText;
-		alert(order_item);
-
-		
-
-	}
+function confirmDeletion(){
+    window.confirm("Are you sure you want to delete this item?");
+   
+  }
