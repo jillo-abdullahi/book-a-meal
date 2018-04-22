@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book-A-Meal::Home</title>
+    <title>Book-A-Meal::Choose Caterer</title>
     <link rel="shortcut icon" href="img/logo.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -12,7 +12,7 @@
 <body>
 <!-- Navbar -->
 <div class="topnav" id="myTopnav">
-  <a href="index.html" class="active"><b>Book-A-Meal</b></a>
+  <a href="index.html"><b>Book-A-Meal</b></a>
   <a href="index.html" class="menu-item">Sign Out</a>
   <a href="#" class="user menu-item"><b>HungryJames</b></a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
@@ -20,8 +20,9 @@
 
 <div class="choose-caterer-intro-header">
   <input type="text" name="search" placeholder="Search Caterer">
-  <button class="button" onclick="window.location.href='index.html'"><span>Your order history</span></button>
+  <button class="button" onclick="window.location.href='#order-history-table'"><span>Your order history</span></button>
 </div>
+
 <div class="popular-caterer-intro-header">
     <div class="gallery">
       <a target="_blank" href="order-meals.html">
@@ -62,21 +63,134 @@
       <a target="_blank" href="order-meals.html">
         <img src="img/java.jpg" alt="Java logo" width="600" height="400">
       </a>
-      <div class="desc">Coffee that's always the way you like.</div>
+      <div class="desc">Coffee thats always the way you like.</div>
     </div>
 </div>
+<table id="order-history-table">
+   <tr>
+    <th>Order ID</th>
+    <th>Caterer</th>
+    <th>Items in this order</th>
+    <th>Total cost</th>s
+    <th>Date</th>
+    <th>Status</th>
+  </tr>
+  <tr>
+    <td>201845658</td>
+    <td>Kentucky Fried Chickens</td>
+    <td>
+      <ul>
+        <li>Two piece chicken</li>
+        <li>500ml Coke</li>
+        <li>chips</li>
+      </ul>
+    </td>
+    <td>Ksh.<span id="cost">1500</span></td>
+    <td>2018-04-12</td>
+    <td>Pending</td>
+  </tr>
+  <tr>
+    <td>201846898</td>
+    <td>Kentucky Fried Chickens</td>
+    <td>
+      <ul>
+        <li>Two piece chicken</li>
+        <li>500ml Coke</li>
+        <li>chips</li>
+      </ul>
+    </td>
+    <td>Ksh.<span id="cost">1500</span></td>
+    <td>2018-04-10</td>
+    <td>Complete</td>
+  </tr>
+  <tr>
+    <td>201846844</td>
+    <td>Pizza Inn</td>
+    <td>
+      <ul>
+        <li>Two piece chicken</li>
+        <li>500ml Coke</li>
+        <li>chips</li>
+      </ul>
+    </td>
+    <td>Ksh.<span id="cost">1500</span></td>
+    <td>2018-04-05</td>
+    <td>Complete</td>
+  </tr>
+  <tr>
+    <td>201446855</td>
+    <td>Steers</td>
+    <td>
+      <ul>
+        <li>Two piece chicken</li>
+        <li>500ml Coke</li>
+        <li>chips</li>
+      </ul>
+    </td>
+    <td>Ksh.<span id="cost">1500</span></td>
+    <td>2018-03-05</td>
+    <td>Complete</td>
+  </tr>
+  <tr>
+    <td>201842255</td>
+    <td>Subway</td>
+    <td>
+      <ul>
+        <li>Two piece chicken</li>
+        <li>500ml Coke</li>
+        <li>chips</li>
+      </ul>
+    </td>
+    <td>Ksh.<span id="cost">1500</span></td>
+    <td>2018-02-05</td>
+    <td>Complete</td>
+  </tr>
+  <tr>
+    <td>202244455</td>
+    <td>Pizza Inn</td>
+    <td>
+      <ul>
+        <li>Two piece chicken</li>
+        <li>500ml Coke</li>
+        <li>chips</li>
+      </ul>
+    </td>
+    <td>Ksh.<span id="cost">1500</span></td>
+    <td>2018-02-05</td>
+    <td>Complete</td>
+  </tr>
+  <tr>
+    <td>2221844455</td>
+    <td>Kentucky Fried Chickens</td>
+    <td>
+      <ul>
+        <li>Two piece chicken</li>
+        <li>500ml Coke</li>
+        <li>chips</li>
+      </ul>
+    </td>
+    <td>Ksh.<span id="cost">1500</span></td>
+    <td>2018-02-05</td>
+    <td>Complete</td>
+  </tr>
 
-<div class="footer">
-  <ul id="footer-nav">
-    <li><a href="index.html">Home</a></li>
-    <li class="divider">&sdot;</li>
-    <li><a href="#">About Us</a></li>
-    <li class="divider">&sdot;</li>
-    <li><a href="#">Contact Us</a></li>
-    
-  </ul>
-</div>
+</table>
 
+<footer class="footer-section">
+
+      <p class="footer-company-motto">Heaven for all food lovers.</p>
+
+      <p class="footer-links">
+        <a href="index.html">Home</a>
+        ·
+        <a href="#aboutus">About</a>
+        ·
+        <a href="#contact">Contact</a>
+      </p>
+
+      <p class="footer-company-name">Book-A-Meal &copy; 2018</p>
+
+    </footer>
 
 
 <script type="text/javascript" src="js/main.js"></script>
