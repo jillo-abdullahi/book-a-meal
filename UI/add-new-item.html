@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book-A-Meal::Customer Registration</title>
+    <link rel="shortcut icon" href="img/logo.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!-- Custom fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- Navbar -->
+<div class="topnav" id="myTopnav">
+  <a href="index.html">Book-A-Meal</a>
+  <a href="index.html" class="menu-item">Sign Out</a>
+  <a href="#" class="user menu-item"><b>KFC</b></a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+ <div class="custreg-intro-header">
+
+    <form action="">
+      <div class="imgcontainer">
+          <img src="img/burger1.png" alt="Avatar" width="100" height="100" class="avatar">
+      </div>
+      <div class="container">
+        <label for="itemname"><b>Item name</b></label>
+        <input type="text" name="itemname" placeholder="Name of item" required>
+        <label for="itemdescription"><b>Item Description</b></label>
+        <textarea rows="4" cols="50" placeholder="Item description" name="itemdescription" required></textarea> 
+        <label for="itemprice"><b>Item price</b></label>
+        <input type="text" name="itemprice" placeholder="Item price" required> 
+
+        <label for="category"><b>Category</b></label>
+        <select>
+          <option>Main Meal</option>
+          <option>Drinks</option>
+          <option>Dessert</option>
+          <option>Today's specials</option>
+        </select>
+        <button class="button" type="submit"><span>Add Item</span></button>
+        
+        
+      </div>
+    </form>
+
+</div>
+
+<footer class="footer-section">
+
+      <p class="footer-company-motto">Heaven for all food lovers.</p>
+
+      <p class="footer-links">
+        <a href="index.html">Home</a>
+        ·
+        <a href="#aboutus">About</a>
+        ·
+        <a href="#contact">Contact</a>
+      </p>
+
+      <p class="footer-company-name">Book-A-Meal &copy; 2018</p>
+
+    </footer>
+
+
+
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book-A-Meal::Place an order</title>
+    <title>Book-A-Meal::Update Menu</title>
     <link rel="shortcut icon" href="img/logo.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -12,36 +12,30 @@
 <body>
 <!-- Navbar -->
 <div class="topnav" id="myTopnav">
-  <a href="index.html"><b>Book-A-Meal</b></a>
+  <a href="index.html">Book-A-Meal</a>
   <a href="index.html" class="menu-item">Sign Out</a>
-  <a href="#" class="user menu-item"><b>HungryJames</b></a>
+  <a href="#" class="user menu-item"><b>KFC</b></a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 
 <div class="order-intro-header">
   <h2><img src="img/kfc.jpg" alt="caterer logo" width="100" height="100"></h2>
   <h2 class="caterer-name">Kentucky Fried Chicken<br>
-    <p style="font-size: 16px">Order meals from this caterer.</p>
+    <p style="font-size: 16px">Make changes to your current menu.</p>
+  </h2>
+
 
 </div>
 <div class="caterer-specs-intro-header">
-  <div class="menu">
-    <h4>Today's menu</h4>
-    <ul>
-       <li><a href="#mainmeals">Main meals</a></li>
-       <li><a href="#drinks">Drinks</a></li>
-       <li><a href="#desserts">Desserts</a></li>
-       <li><a href="#todayspecials">Today's Specials</a></li>
-      </ul>
-    </div>
-    <div class="menu-items">
+    <div class="caterer-menu-items">
         <article class="meal-item">
             <div class="gallery">
                 <img src="img/burger1.png" alt="burger image" width="250" height="200">
                 <div class="desc">
                 <p>Finest delicious tasty burger</p>
                 <p><b>Ksh</b><span class="price">500</span></p>
-                <button type="button" id="add-to-cart">Add to order</button>
+                <button type="button" id="add-to-cart" onclick="confirmDeletion()">Delete this item</button>
+                <button type="button" id="add-to-cart" onclick="window.location.href='edit-item.html'" >Edit this item</button>
               </div>
             </div>
 
@@ -50,7 +44,8 @@
                 <div class="desc">
                 <p>Finest delicious tasty pizza</p>
                 <p><b>Ksh</b><span class="price">800</span></p>
-                <button type="button" id="add-to-cart">Add to order</button>
+                <button type="button" id="add-to-cart" onclick="confirmDeletion()">Delete this item</button>
+                <button type="button" id="add-to-cart" onclick="window.location.href='edit-item.html'">Edit this item</button>
               </div>
             </div>
 
@@ -59,7 +54,8 @@
                 <div class="desc">
                 <p>Finest delicious creamy milkshake</p>
                 <p><b>Ksh</b><span class="price">300</span></p>
-                <button type="button" id="add-to-cart">Add to order</button>
+                <button type="button" id="add-to-cart" onclick="confirmDeletion()">Delete this item</button>
+                <button type="button" id="add-to-cart" onclick="window.location.href='edit-item.html'">Edit this item</button>
               </div>
             </div>
 
@@ -68,7 +64,8 @@
                 <div class="desc">
                 <p>Finest delicious tasty burger</p>
                 <p><b>Ksh</b><span class="price">500</span></p>
-                <button type="button" id="add-to-cart">Add to order</button>
+                <button type="button" id="add-to-cart" onclick="confirmDeletion()">Delete this item</button>
+                <button type="button" id="add-to-cart" onclick="window.location.href='edit-item.html'">Edit this item</button>
               </div>
             </div>
 
@@ -77,7 +74,8 @@
                 <div class="desc">
                 <p>Finest delicious tasty pizza</p>
                 <p><b>Ksh</b><span class="price">800</span></p>
-                <button type="button" id="add-to-cart">Add to order</button>
+                <button type="button" id="add-to-cart" onclick="confirmDeletion()">Delete this item</button>
+                <button type="button" id="add-to-cart" onclick="window.location.href='edit-item.html'">Edit this item</button>
               </div>
             </div>
 
@@ -86,7 +84,8 @@
                 <div class="desc">
                 <p>Finest delicious creamy milkshake</p>
                 <p><b>Ksh</b><span class="price">300</span></p>
-                <button type="button" id="add-to-cart">Add to order</button>
+                <button type="button" id="add-to-cart" onclick="confirmDeletion()">Delete this item</button>
+                <button type="button" id="add-to-cart" onclick="window.location.href='edit-item.html'">Edit this item</button>
               </div>
             </div>
 
@@ -96,7 +95,8 @@
                 <div class="desc">
                 <p>Finest delicious tasty burger</p>
                 <p><b>Ksh</b><span class="price">500</span></p>
-                <button type="button" id="add-to-cart">Add to order</button>
+                <button type="button" id="add-to-cart" onclick="confirmDeletion()">Delete this item</button>
+                <button type="button" id="add-to-cart" onclick="window.location.href='edit-item.html'">Edit this item</button>
               </div>
             </div>
 
@@ -105,7 +105,8 @@
                 <div class="desc">
                 <p>Finest delicious tasty pizza</p>
                 <p><b>Ksh</b><span class="price">800</span></p>
-                <button type="button" id="add-to-cart">Add to order</button>
+                <button type="button" id="add-to-cart" onclick="confirmDeletion()">Delete this item</button>
+                <button type="button" id="add-to-cart" onclick="window.location.href='edit-item.html'">Edit this item</button>
               </div>
             </div>
 
@@ -114,29 +115,22 @@
                 <div class="desc">
                 <p>Finest delicious creamy milkshake</p>
                 <p><b>Ksh</b><span class="price">300</span></p>
-                <button type="button" id="add-to-cart">Add to order</button>
+                <button type="button" id="add-to-cart" onclick="confirmDeletion()">Delete this item</button>
+                <button type="button" id="add-to-cart" onclick="window.location.href='edit-item.html'">Edit this item</button>
               </div>
             </div>
 
         </article> 
   </div>
   
-  <div class="cart">
-      <h4>Your order</h4>
-      <ol>
-        <li>Roast chicken Ksh.<span>500</span></li>
-        <li>Diet Coke Ksh.<span>100</span></li>
-        <li>Hamburger Ksh.<span>600</span></li>
-        <li>Veggie Burger Ksh.<span>300</span></li>
-        <li>Drinking water Ksh.<span>50</span></li>
-      </ol>
-      <h4><span>Total:</span> 1200</h4>
-      <button class="button" type="button"><span>Check out</span></button>
+  <div class="caterer-actions">
+      <button class="button" type="button" onclick="window.location.href='add-new-item.html'"><span>Add New Item</span></button>
+      <button class="button" type="button" onclick="setMenu()"><span>Set Updated Menu</span></button>
 
   </div>
 </div>
 
-<footer class="footer-section">
+<footer class="footer-section" >
 
       <p class="footer-company-motto">Heaven for all food lovers.</p>
 
@@ -155,6 +149,10 @@
 
 
 <script type="text/javascript" src="js/main.js"></script>
-
+<script>
+  function setMenu(){
+    alert("Menu successfully set and notification sent to customers!");
+  }
+</script>
 </body>
 </html>
