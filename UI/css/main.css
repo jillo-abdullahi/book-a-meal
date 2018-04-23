@@ -19,7 +19,6 @@ h1,h2,h3,h4,h5,h6,span {
   overflow: hidden;
   background-color: #34495e;
   border-bottom: 2px solid #34495e;
-
 }
 
 .topnav a {
@@ -28,8 +27,7 @@ h1,h2,h3,h4,h5,h6,span {
   color: white;
   text-align: center;
   padding: 14px 16px;
-  text-decoration: none;
-  
+  text-decoration: none;  
 }
 
 .topnav a.menu-item {
@@ -51,23 +49,20 @@ h1,h2,h3,h4,h5,h6,span {
 .topnav .icon {
   display: none;
 }
+
 /*Styling for landing page*/
 .intro-header {
-
   width: 100%;
   height: 400px;
   padding-top:0px;
-
   text-align: center;
   background: url("../img/intro-bg.jpg") no-repeat center center;
   background-size: cover;
- 
-
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
+
 @media screen and (min-height: 400px) {
    .intro-header{
     height: 100%;
@@ -86,7 +81,6 @@ h1,h2,h3,h4,h5,h6,span {
     float: right;
     display: block;
   }
-
 }
 
 @media screen and (max-width: 600px) {
@@ -151,12 +145,7 @@ h1,h2,h3,h4,h5,h6,span {
   font-size: 10px;
   padding: 6px;
   width: 50%;
-  }
- 
-}
-
-@media screen and (max-width: 600px){
-
+  } 
 }
 
 /*Login form*/
@@ -168,10 +157,7 @@ h1,h2,h3,h4,h5,h6,span {
   background-color: rgb(245, 245, 245);
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   border-radius: 6px;
-
 }
-
-
 
 input[type=text], input[type=password], textarea,select{
     width: 100%;
@@ -241,13 +227,13 @@ span.psw {
     }
 
 }
+
 /*Footer fix for very large screens*/
-
-@media screen and (min-width: 700px) {
-    footer {
-      position: fixed;
-      bottom: 0;
-
+@media only screen and (min-height: 736px) {
+    .footer-section {
+      position:absolute; 
+      bottom:0;          
+      left:0; 
     }
 }
 
@@ -332,9 +318,6 @@ div.desc {
     padding: 15px;
     text-align: center;
 }
-.popular {
-  float: left;
-}
 
 #order-history-table {
   width:90%;
@@ -347,8 +330,6 @@ div.desc {
   overflow: hidden;
   border-collapse: collapse;
 }
-
-
 
 #order-history-table td, #order-history-table th {
     border: 0;
@@ -461,7 +442,7 @@ article .gallery {
   padding: 6px;
   cursor: pointer;
 }
- .cart {
+.cart {
   width:22.5%;
   margin: auto;
   overflow: hidden;
@@ -471,13 +452,13 @@ article .gallery {
   border-radius: 6px;
   float: left;
  }
-  .cart h4 {
+.cart h4 {
     margin:0;
     background-color: #95a5a6;
     padding:8px;
 
  }
- .cart button {
+.cart button {
   width: 50%;
   float:right;
   font-size: 12px;
@@ -485,7 +466,7 @@ article .gallery {
 
  /*Caterer page*/
 
- #today-header {
+#today-header {
   width:200px;
   margin: auto;
   display: block;
@@ -500,7 +481,7 @@ article .gallery {
 
  }
 
- #complete-order {
+#complete-order {
   border-radius: 6px;
   padding: 6px;
   cursor: pointer;
@@ -537,10 +518,8 @@ article .gallery {
   margin: auto;
   
 }
- 
- 
 
-  /*footer section*/
+/*footer section*/
 
 .footer-section{
   background-color: #34495e;
@@ -548,7 +527,6 @@ article .gallery {
   box-sizing: border-box;
   width: 100%;
   text-align: center;
-
   padding: 20px;
   margin-top: 40px;
 }
@@ -603,13 +581,14 @@ article .gallery {
   }
 }
 
-footer{
+footer {
   position: static;
   bottom: 0;
 }
 
-@media (max-height:300px){
-  footer { position: static; }
- 
+@media (max-height: 300px){
+  footer { 
+    position: static; 
+  } 
 }
 
