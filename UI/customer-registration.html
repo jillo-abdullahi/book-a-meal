@@ -1,55 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Book-A-Meal::Customer Registration</title>
-    <link rel="shortcut icon" href="img/logo.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-
-    <!-- Custom fonts -->
+    <link rel="shortcut icon" href="img/logo.ico"/>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-</head>
-<body>
-<!-- Navbar -->
-<div class="topnav" id="myTopnav">
-  <a href="index.html"><b>Book-A-Meal</b></a>
-  <a href="login.html" class="menu-item">Login</a>
-  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-</div>
- <div class="custreg-intro-header">
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="index.html"><b>Book-A-Meal</b></a>
+      <a href="login.html" class="menu-item">Login</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+     <div class="custreg-intro-header">
+      <form action="">
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
 
-    <form action="">
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-        <label for="fname"><b>Full name</b></label>
-        <input type="text" placeholder="Enter full name" name="fname" required>
+          <label for="fname"><b>Full name</b></label>
+          <input type="text" placeholder="Enter full name" name="fname" required>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter email" name="email" required>
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter email" name="email" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-        <label for="cpsw"><b>Confirm password</b></label>
-        <input type="password" placeholder="Re-type password" name="cpsw" required>
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
 
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> I accept the terms and conditions of Book-A-Meal.
-        </label>
-        <button class="button" type="submit"><span>Register</span></button>
-        <label>
-          <span><a href="caterer-registration.html">Click here</a> to register as a caterer instead.</span>
-        </label>
-        
-      </div>
-    </form>
+          <label for="cpsw"><b>Confirm password</b></label>
+          <input type="password" placeholder="Re-type password" name="cpsw" required>
 
-</div>
+          <label><input type="checkbox" checked="checked" name="remember"> I accept the terms and conditions of Book-A-Meal.</label>
+          <button class="button" type="submit"><span>Register</span></button>
+          <label><span><a href="caterer-registration.html">Click here</a> to register as a caterer instead.</span></label>
+        </div>
+      </form>
+    </div>
 
-<footer class="footer-section">
-
+    <footer class="footer-section">
       <p class="footer-company-motto">Heaven for all food lovers.</p>
-
       <p class="footer-links">
         <a href="index.html">Home</a>
         ·
@@ -57,14 +47,8 @@
         ·
         <a href="#contact">Contact</a>
       </p>
-
       <p class="footer-company-name">Book-A-Meal &copy; 2018</p>
-
     </footer>
-
-
-
-<script type="text/javascript" src="js/main.js"></script>
-
-</body>
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
 </html>
