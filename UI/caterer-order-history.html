@@ -1,121 +1,115 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Book-A-Meal::Order History</title>
-    <link rel="shortcut icon" href="img/logo.ico"/>
+  <head>
+    <title>Book-A-Meal::Caterer order History</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/logo.ico"/>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-
-    <!-- Custom fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-</head>
-<body>
-<!-- Navbar -->
-<div class="topnav" id="myTopnav">
-  <a href="index.html">Book-A-Meal</a>
-  <a href="index.html" class="menu-item">Sign Out</a>
-  <a href="caterer-change-menu.html" class="menu-item">Change Menu</a>
-  <a href="caterer-order-history.html" class="menu-item">Order History</a>
-  <a href="#" class="user menu-item"><b>KFC</b></a>
-  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-</div>
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="index.html">Book-A-Meal</a>
+      <a href="index.html" class="menu-item">Sign Out</a>
+      <a href="caterer-change-menu.html" class="menu-item">Change Menu</a>
+      <a href="caterer-order-history.html" class="menu-item">Order History</a>
+      <a href="#" class="user menu-item"><b>KFC</b></a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
 
-<div id="today-header">
-  <h3>Your order history</h3>
-</div>
+    <div id="today-header">
+      <h3>Your order history</h3>
+    </div>
 
-<table id="order-history-table">
-   <tr>
-    <th>Order ID</th>
-    <th>Customer name</th>
-    <th>Items in this order</th>
-    <th>Total cost</th>
-    <th>Date</th>
-    <th>Time</th>
-    <th>Status</th>
-  </tr>
-  <tr>
-    <td>201845658</td>
-    <td>Hungry James</td>
-    <td>
-      <ul>
-        <li>Two piece chicken</li>
-        <li>500ml Coke</li>
-        <li>chips</li>
-      </ul>
-    </td>
-    <td>Ksh.<span id="cost">1500</span></td>
-    <td>2018-04-12</td>
-    <td>0800hrs</td>
-    <td>Completed</td>
-  </tr>
-  <tr>
-    <td>201846898</td>
-    <td>Mark Zuckerberg</td>
-    <td>
-      <ul>
-        <li>Two piece chicken</li>
-        <li>500ml Coke</li>
-        <li>chips</li>
-      </ul>
-    </td>
-    <td>Ksh.<span id="cost">1500</span></td>
-    <td>2018-04-10</td>
-    <td>0700hrs</td>
-    <td>Completed</td>
-  </tr>
-  <tr>
-    <td>201846844</td>
-    <td>Sundar Pichai</td>
-    <td>
-      <ul>
-        <li>Two piece chicken</li>
-        <li>500ml Coke</li>
-        <li>chips</li>
-      </ul>
-    </td>
-    <td>Ksh.<span id="cost">1500</span></td>
-    <td>2018-04-05</td>
-    <td>0800hrs</td>
-    <td>Completed</td>
-  </tr>
-  <tr>
-    <td>201446855</td>
-    <td>Elon Musk</td>
-    <td>
-      <ul>
-        <li>Two piece chicken</li>
-        <li>500ml Coke</li>
-        <li>chips</li>
-      </ul>
-    </td>
-    <td>Ksh.<span id="cost">1500</span></td>
-    <td>2018-03-05</td>
-    <td>1800hrs</td>
-    <td>Completed</td>
-  </tr>
-  <tr>
-    <td>201842255</td>
-    <td>Mark Zuckerberg</td>
-    <td>
-      <ul>
-        <li>Two piece chicken</li>
-        <li>500ml Coke</li>
-        <li>chips</li>
-      </ul>
-    </td>
-    <td>Ksh.<span id="cost">1500</span></td>
-    <td>2018-02-05</td>
-    <td>2200hrs</td>
-    <td>Completed</td>
-  </tr>
-</table>
+    <table id="order-history-table">
+      <tr>
+        <th>Order ID</th>
+        <th>Customer name</th>
+        <th>Items in this order</th>
+        <th>Total cost</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>201845658</td>
+        <td>Hungry James</td>
+        <td>
+          <ul>
+            <li>Two piece chicken</li>
+            <li>500ml Coke</li>
+            <li>chips</li>
+          </ul>
+        </td>
+        <td>Ksh.<span id="cost">1500</span></td>
+        <td>2018-04-12</td>
+        <td>0800hrs</td>
+        <td>Completed</td>
+        </tr>
+      <tr>
+        <td>201846898</td>
+        <td>Mark Zuckerberg</td>
+        <td>
+          <ul>
+            <li>Two piece chicken</li>
+            <li>500ml Coke</li>
+            <li>chips</li>
+          </ul>
+        </td>
+        <td>Ksh.<span id="cost">1500</span></td>
+        <td>2018-04-10</td>
+        <td>0700hrs</td>
+        <td>Completed</td>
+      </tr>
+      <tr>
+        <td>201846844</td>
+        <td>Sundar Pichai</td>
+        <td>
+          <ul>
+            <li>Two piece chicken</li>
+            <li>500ml Coke</li>
+            <li>chips</li>
+          </ul>
+        </td>
+        <td>Ksh.<span id="cost">1500</span></td>
+        <td>2018-04-05</td>
+        <td>0800hrs</td>
+        <td>Completed</td>
+      </tr>
+      <tr>
+        <td>201446855</td>
+        <td>Elon Musk</td>
+        <td>
+          <ul>
+            <li>Two piece chicken</li>
+            <li>500ml Coke</li>
+            <li>chips</li>
+          </ul>
+        </td>
+        <td>Ksh.<span id="cost">1500</span></td>
+        <td>2018-03-05</td>
+        <td>1800hrs</td>
+        <td>Completed</td>
+      </tr>
+      <tr>
+        <td>201842255</td>
+        <td>Mark Zuckerberg</td>
+        <td>
+          <ul>
+            <li>Two piece chicken</li>
+            <li>500ml Coke</li>
+            <li>chips</li>
+          </ul>
+        </td>
+        <td>Ksh.<span id="cost">1500</span></td>
+        <td>2018-02-05</td>
+        <td>2200hrs</td>
+        <td>Completed</td>
+      </tr>
+    </table>
 
-
-<footer class="footer-section">
-
+    <footer class="footer-section">
       <p class="footer-company-motto">Heaven for all food lovers.</p>
-
       <p class="footer-links">
         <a href="index.html">Home</a>
         ·
@@ -123,13 +117,8 @@
         ·
         <a href="#contact">Contact</a>
       </p>
-
       <p class="footer-company-name">Book-A-Meal &copy; 2018</p>
-
     </footer>
-
-
-<script type="text/javascript" src="js/main.js"></script>
-
-</body>
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
 </html>
