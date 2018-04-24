@@ -8,16 +8,6 @@ class TestUserLogin(unittest.TestCase):
 		"""Creates the app as a test client"""
 		app.testing = True
 		self.app = app.test_client()
-		self.new_user_info = {
-            "username":"zayn",
-            "full-name":"Zayn Malik",
-            "email":"jayloabdullahi@gmail.com",
-            "password":"check1234"
-            }
-		self.user_login_info = {
-			"username":"zayn",
-			"password":"check1234"
-			}
 
 	def test_successful_registration(self):
 		response = self.register_user()
