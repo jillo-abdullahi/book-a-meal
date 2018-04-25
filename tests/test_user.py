@@ -1,4 +1,4 @@
-from app import app
+from app import create_app
 import unittest
 import json
 
@@ -38,7 +38,7 @@ class TestUserLogin(unittest.TestCase):
 			"username":"zayn",
 			"password":"check1234"
 			}
-		response = self.app.post('/api/v1/auth/register',
+		response = self.app.post('/api/v1/auth/login',
 			data = json.dumps(user_login_info),
 			content_type='application/json')
 		return response
