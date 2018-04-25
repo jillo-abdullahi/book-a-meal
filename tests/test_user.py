@@ -6,13 +6,15 @@ class TestUserLogin(unittest.TestCase):
 	"""Test class for user login"""
 	def setUp(self):
 		"""Creates the app as a test client"""
-		app.testing = True
-		self.app = app.test_client()
+		self.app = create_app("testing")
+		self.app = self.app.test_client()
 		
 	def test_successful_registration(self):
 		response = self.register_user()
 		self.assertEqual(response.status_code, 201)
 		self.assertEqual(response.status_code, 200)
+		# self.assertEqual(response.message[0])
+		print response
 
 
 	def test_successful_login(self):

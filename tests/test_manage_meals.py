@@ -14,10 +14,10 @@ class TestManageMeals(unittest.TestCase):
 		response = self.add_new_meal()
 
 		self.assertEqual(response.status_code, 201)
-		delete_response = self.app.delete('/api/v1/auth/meal/1')
+		delete_response = self.app.delete('/api/v1/meal/1')
 		self.assertEqual(delete_response.status_code, 200)
 
-		result = self.app.get('/api/v1/auth/meal/1')
+		result = self.app.get('/api/v1/meal/1')
 		self.assertEqual(result.status_code, 404)
 
 	def test_caterer_can_add_new_meal(self):
@@ -33,11 +33,11 @@ class TestManageMeals(unittest.TestCase):
 		response = self.add_new_meal()
 		self.assertEqual(response.status_code, 201)
 
-		edit_response = self.app.put('/api/v1/auth/meal/1',
+		edit_response = self.app.put('/api/v1/meal/1',
 			data = new_meal_details)
 		
 		self.assertEqual(edit_response.status_code, 200)
-		result = self.app.get('/api/v1/auth/meal/1')
+		result = self.app.get('/api/v1/meal/1')
 		self.assertIn("Todays special", str(result.data))
             
 
@@ -46,7 +46,7 @@ class TestManageMeals(unittest.TestCase):
 						"description":"Tasty burger",
 						"price": "500",
 						"category": "main meal"}
-		response = self.app.post('/api/v1/auth/meal',
+		response = self.app.post('/api/v1/meal',
 			data = json.dumps(new_meal_item),
 			content_type='application/json')
 		return response
