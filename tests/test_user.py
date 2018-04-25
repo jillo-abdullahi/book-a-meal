@@ -8,20 +8,19 @@ class TestUserLogin(unittest.TestCase):
 		"""Creates the app as a test client"""
 		self.app = create_app("testing")
 		self.app = self.app.test_client()
-		
+
 	def test_successful_registration(self):
 		response = self.register_user()
 		self.assertEqual(response.status_code, 201)
-		self.assertEqual(response.status_code, 200)
-		# self.assertEqual(response.message[0])
-		print response
+
 
 
 	def test_successful_login(self):
+		self.register_user()
 		response = self.login_user()
 		self.assertEqual(response.status_code, 200)
 		output = json.loads(response.get_data(as_text=True))['message']
-		self.assertEqual(output, 'Login success')
+		self.assertEqual(output, 'User authenticated')
 
 	def register_user(self):
 		new_user_info = {
