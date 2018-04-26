@@ -5,6 +5,7 @@ from instance.config import app_config
 
 all_users = []
 all_meals = []
+meals_menu = []
 
 def create_app(config_name):
 	app = FlaskAPI(__name__, instance_relative_config=True)
@@ -68,5 +69,10 @@ def create_app(config_name):
 
   			return jsonify({"message":"Meal successfully changed","Meal":meal}),200
 		return jsonify({"message":"Meal not found"}),404
+
+	@app.route('/api/v1/menu', methods=['GET'])
+	def get_meals_menu():
+
+		return jsonify({"Meals Menu": meals_menu}),200
 
 	return app
