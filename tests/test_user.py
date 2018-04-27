@@ -1,6 +1,9 @@
-from app import create_app
 import unittest
 import json
+
+# Local import
+from app import create_app
+
 
 class TestUserLogin(unittest.TestCase):
 	"""Test class for user login"""
@@ -11,9 +14,7 @@ class TestUserLogin(unittest.TestCase):
 
 	def test_successful_registration(self):
 		response = self.register_user()
-		self.assertEqual(response.status_code, 201)
-
-
+		self.assertEqual(response.status_code, 200)
 
 	def test_successful_login(self):
 		self.register_user()
@@ -29,7 +30,7 @@ class TestUserLogin(unittest.TestCase):
             "email":"jayloabdullahi@gmail.com",
             "password":"check1234"
             }
-		response = self.app.post('/api/v1/auth/register',
+		response = self.app.post('/api/v1/auth/signup',
 			data = json.dumps(new_user_info),
 			content_type='application/json')
 		return response
