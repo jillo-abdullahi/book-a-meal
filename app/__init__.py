@@ -3,10 +3,8 @@
 from flask_api import FlaskAPI
 from flask import request, jsonify
 
+#local import
 from instance.config import app_config
-
-
-
 
 def create_app(config_name):
 	app = FlaskAPI(__name__, instance_relative_config=True)
@@ -25,9 +23,8 @@ def create_app(config_name):
 	from .v1.menu import menu as menu_blueprint
 	app.register_blueprint(menu_blueprint, url_prefix='/api/v1')
 
-
-
-
-
+	# Register orders blueprint
+	from .v1.orders import orders as orders_blueprint
+	app.register_blueprint(orders_blueprint, url_prefix='/api/v1')
 
 	return app
