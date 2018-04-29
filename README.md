@@ -79,7 +79,9 @@ PUT `api/v1/orders/<orderid>`| Modify an order.
 GET `api/v1/orders`| Get all the orders.
 
 #### API Documentation
-Coming soon...
+Click on the link below to view api documentation
+
+`https://bookameal8.docs.apiary.io`
 
 ## View the app on Heroku
 Click on the following link to view the app on Heroku
