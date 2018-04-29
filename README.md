@@ -81,6 +81,12 @@ GET `api/v1/orders`| Get all the orders.
 #### API Documentation
 Coming soon...
 
+## View the app on Heroku
+Click on the following link to view the app on Heroku
+
+[Book-A-Meal on Heroku](https://bookameal-api-heroku.herokuapp.com/)
+
+
 
 
 
