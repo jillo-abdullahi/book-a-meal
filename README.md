@@ -6,7 +6,7 @@
 # Book-A-Meal
 Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat.
 
-# Installation
+# Installation - UI
 To get a view of the front-end UI, do the following:&nbsp;
 
 Clone the repository into your local environment: &nbsp;
