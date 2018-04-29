@@ -1,6 +1,8 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/jillo-abdullahi/book-a-meal/badge.svg?branch=ft-auth-endpoints)](https://coveralls.io/github/jillo-abdullahi/book-a-meal?branch=ft-auth-endpoints)
 [![Build Status](https://travis-ci.org/jillo-abdullahi/book-a-meal.svg?branch=ft-auth-endpoints)](https://travis-ci.org/jillo-abdullahi/book-a-meal)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5bb5177276e94516bd936a2abeb672f2)](https://www.codacy.com/app/jillo-abdullahi/book-a-meal?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jillo-abdullahi/book-a-meal&amp;utm_campaign=Badge_Grade)
+
 
 
 # Book-A-Meal
