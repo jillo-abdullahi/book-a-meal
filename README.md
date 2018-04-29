@@ -26,7 +26,7 @@ https://jillo-abdullahi.github.io/book-a-meal/UI/ &nbsp;
 
 # Installation - API
 Use the following guide the get the API up and running.&nbsp;
-## Requirements
+#### Requirements
 It is recommended that you have the following set up on your local environment before getting started
 
 1. [python 3.x](https://www.python.org/downloads/)
@@ -37,9 +37,28 @@ It is recommended that you have the following set up on your local environment b
 Do the following:
 
 1. Clone the repo into a folder of your choice:
-
 `git clone https://github.com/jillo-abdullahi/book-a-meal`
+2. Navigate to the cloned folder
+`cd book-a-meal`
+3. Create a virtual environment
+`virtualenv venv`
+4. Activate the virtual environment you just created
+`source venv/bin/activate`
+5. Install all dependencies into your virtual environment
+`pip install -r requirements.txt`
+6. Confirm you have all packages installed
+`pip freeze`
+7. Set environment variables for `APP_SETTINGS`
+`export APP_SETTINGS="development"`
+8. Set the entry point for the app
+`export FLASK_APP="run.py"`
 
-2.
+#### Run the API
+Get the app running by typing
+`flask run`
+
+
+
+
 
 
