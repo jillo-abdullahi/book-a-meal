@@ -57,6 +57,30 @@ Do the following:
 Get the app running by typing
 `flask run`
 
+#### Run tests
+To run all tests type
+`nosetests --with-coverage --cover-package=app`
+
+#### Test API endpoints
+Fire up [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?utm_source=chrome-app-launcher-info-dialog)[virtualenv](http://www.pythonforbeginners.com/basics/ to test the endpoints.&nbsp;
+
+**EndPoint** | **Functionality**
+--- | ---
+POST `/api/v1/auth/signup` | Creates a user account.
+POST `/api/v1/auth/login` | Logs in a user.
+POST  `/api/v1/meals` | Add a meal option. Only admin caterers can do this.
+GET `api/v1/meals`| Get all meal options. Only admin caterers can do this.
+PUT `api/v1/meals/<mealid>`| Update the information of a meal option.
+DELETE `api/v1/meals/<mealid>` | Remove a meal option.
+POST `api/v1/menu`| Set up the menu for the day.
+GET `api/v1/menu`| Get the menu for the day.
+POST `api/v1/orders`| Select the meal option from the menu.
+PUT `api/v1/orders/<orderid>`| Modify an order.
+GET `api/v1/orders`| Get all the orders.
+
+#### API Documentation
+Coming soon...
+
 
 
 
