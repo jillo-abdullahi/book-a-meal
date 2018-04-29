@@ -2,6 +2,7 @@
 import unittest
 import json
 
+# Local import
 from app import create_app
 
 
@@ -9,6 +10,7 @@ class TestMealsMenu(unittest.TestCase):
     """Test class for viewing for viewing and testing of menu"""
 
     def setUp(self):
+        """Creates app with test client"""
         self.app = create_app("testing")
         self.app = self.app.test_client()
 

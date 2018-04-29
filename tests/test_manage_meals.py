@@ -1,6 +1,8 @@
+"""Test class for all things meal management"""
 import unittest
 import json
 
+# Local import
 from app import create_app
 
 
@@ -8,7 +10,7 @@ class TestManageMeals(unittest.TestCase):
     """Test class for caterer ability to add,delete and update meals"""
 
     def setUp(self):
-        """Creates the app as a test client"""
+        """Creates the app with test client"""
         self.app = create_app("testing")
         self.app = self.app.test_client()
         self.new_meal = {"name": "Hamburger",
