@@ -1,6 +1,5 @@
-
-[![Coverage Status](https://coveralls.io/repos/github/jillo-abdullahi/book-a-meal/badge.svg?branch=ft-auth-endpoints)](https://coveralls.io/github/jillo-abdullahi/book-a-meal?branch=ft-auth-endpoints)
 [![Build Status](https://travis-ci.org/jillo-abdullahi/book-a-meal.svg?branch=ft-auth-endpoints)](https://travis-ci.org/jillo-abdullahi/book-a-meal)
+[![Coverage Status](https://coveralls.io/repos/github/jillo-abdullahi/book-a-meal/badge.svg?branch=ft-auth-endpoints)](https://coveralls.io/github/jillo-abdullahi/book-a-meal?branch=ft-auth-endpoints)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5bb5177276e94516bd936a2abeb672f2)](https://www.codacy.com/app/jillo-abdullahi/book-a-meal?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jillo-abdullahi/book-a-meal&amp;utm_campaign=Badge_Grade)
 [![Maintainability](https://api.codeclimate.com/v1/badges/295fb323b44119118c01/maintainability)](https://codeclimate.com/github/jillo-abdullahi/book-a-meal/maintainability)
 
@@ -79,9 +78,9 @@ PUT `api/v1/orders/<orderid>`| Modify an order.
 GET `api/v1/orders`| Get all the orders.
 
 #### API Documentation
-Click on the link below to view api documentation
+Go to the link below to view api documentation
 
-`https://bookameal8.docs.apiary.io`
+[Book-A-Meal on Apiary.io](https://bookameal8.docs.apiary.io)
 
 ## View the app on Heroku
 Click on the following link to view the app on Heroku
