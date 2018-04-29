@@ -22,6 +22,24 @@ Run `index.html` file in your browser.&nbsp;
 
 #### UI link to gh-pages:
 
-https://jillo-abdullahi.github.io/book-a-meal/UI/
+https://jillo-abdullahi.github.io/book-a-meal/UI/ &nbsp;
+
+# Installation - API
+Use the following guide the get the API up and running.&nbsp;
+## Requirements
+It is recommended that you have the following set up on your local environment before getting started
+
+1. [python 3.x](https://www.python.org/downloads/)
+2. [Git](https://git-scm.com)
+3. Working browser or [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?utm_source=chrome-app-launcher-info-dialog)
+4. [virtualenv](http://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv) for an isolated working environment.&nbsp;
+
+Do the following:
+
+1. Clone the repo into a folder of your choice:
+
+`git clone https://github.com/jillo-abdullahi/book-a-meal`
+
+2.
 
 
