@@ -17,7 +17,7 @@ Clone the repository into your local environment: &nbsp;
 Switch to book-a-meal directory you just cloned:&nbsp;
 `cd book-a-meal/UI`&nbsp;
 
-Run index.html file in your browser.&nbsp;
+Run `index.html` file in your browser.&nbsp;
 
 #### UI link to gh-pages:
 
