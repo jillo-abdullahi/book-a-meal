@@ -62,7 +62,7 @@ To run all tests type
 `nosetests --with-coverage --cover-package=app`
 
 #### Test API endpoints
-Fire up [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?utm_source=chrome-app-launcher-info-dialog)[virtualenv](http://www.pythonforbeginners.com/basics/ to test the endpoints.&nbsp;
+Fire up [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?utm_source=chrome-app-launcher-info-dialog) to test the endpoints.&nbsp;
 
 **EndPoint** | **Functionality**
 --- | ---
