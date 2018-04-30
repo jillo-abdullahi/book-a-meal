@@ -6,7 +6,7 @@ from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identi
 # local import
 from . import auth
 from . import user_instance
-from app.utilities import check_keys, check_empty_dict
+from app.utilities import check_keys, check_empty_dict, check_admin
 
 
 @auth.route("/signup", methods=["POST"])

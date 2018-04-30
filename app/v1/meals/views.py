@@ -1,10 +1,10 @@
 # v1/meals/views.py
 from flask import request, jsonify
-from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity
+from flask_jwt_extended import jwt_required
 
 # local imports
 from . import meals, meal_instance
-from app.utilities import check_keys, check_empty_dict, admin_required
+from app.utilities import check_keys, check_empty_dict, check_admin
 
 
 @meals.route("/meals", methods=["POST"])
@@ -19,6 +19,10 @@ def caterer_add_new_meal():
     if check_empty_dict(get_meal):
         return jsonify({"message": "All fields must be provided"}), 400
 
+    if not check_admin():
+        message = "Current user is not an admin"
+        return jsonify({'message': message}), 400
+
     all_meals = meal_instance.all_meals
 
     if all_meals == {}:
@@ -27,25 +31,32 @@ def caterer_add_new_meal():
         for id in all_meals:
             if get_meal["name"].lower() == all_meals[id]['name'].lower():
                 return jsonify({"message": "Meal already exists"})
-            meal_instance.create_meal(get_meal)
+        meal_instance.create_meal(get_meal)
 
     return jsonify({"message": "Meal successfully added", "Meals": meal_instance.all_meals}), 201
 
 
 @meals.route("/meals", methods=["GET"])
-@admin_required
+@jwt_required
 def caterer_get_all_meals():
-    """Test caterer can get all meals"""
-    import pdb
-    pdb.set_trace()
+    """Test admin caterer can get all meals"""
+    if not check_admin():
+        message = "Current user is not an admin"
+        return jsonify({'message': message}), 400
+
     if not meal_instance.all_meals:
-        return jsonify({"message": "No meals added yet"}), 204
+        return jsonify({"message": "No meals added yet"}), 404
     return jsonify({"Meals": meal_instance.all_meals}), 200
 
 
 @meals.route("/meals/<id>", methods=["DELETE"])
+@jwt_required
 def caterer_delete_meal(id):
     """Test meal can be deleted"""
+    if not check_admin():
+        message = "Current user is not an admin"
+        return jsonify({'message': message}), 400
+
     meals = meal_instance.all_meals
     for meal_id in meals:
         if id == meal_id:
@@ -55,9 +66,14 @@ def caterer_delete_meal(id):
 
 
 @meals.route("/meals/<id>", methods=["PUT"])
+@jwt_required
 def caterer_edit_meal(id):
     """Test meal can be edited"""
     new_details = request.get_json()
+
+    if not check_admin():
+        message = "Current user is not an admin"
+        return jsonify({'message': message}), 400
 
     if check_keys(new_details, 4):
         return jsonify({"message": "All fields must be provided"}), 400

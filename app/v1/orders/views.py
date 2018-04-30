@@ -1,19 +1,27 @@
 """orders/views.py"""
 from flask import request, jsonify
+from flask_jwt_extended import jwt_required
 
 # local import
 from . import orders, orders_instance
+from app.utilities import check_admin
 
 
 @orders.route('/orders', methods=['GET'])
+@jwt_required
 def get_all_orders():
     """get all orders for the day"""
+    if not check_admin():
+        message = "Current user is not an admin"
+        return jsonify({'message': message}), 400
+
     if not orders_instance.orders:
-        return jsonify({"message": "No orders found"}), 204
-        return jsonify({"Orders": orders_instance.orders}), 200
+        return jsonify({"message": "No orders found"}), 404
+    return jsonify({"Orders": orders_instance.orders}), 200
 
 
 @orders.route('/orders', methods=['POST'])
+@jwt_required
 def make_an_order():
     """Customer can place an order"""
     get_order = request.get_json()
@@ -24,17 +32,13 @@ def make_an_order():
 
 
 @orders.route('/orders/<id>', methods=['PUT'])
+@jwt_required
 def change_order(id):
     """Customer can change an order"""
     new_order = request.get_json()
 
-    # if check_keys(new_order, 4):
-    # 	return jsonify({"message":"All fields must be provided"}),400
-
-    # if check_empty_dict(new_order):
-    # 	return jsonify({"message": "All fields must be provided"}),400
-
     all_orders = orders_instance.orders
+
     for order_id in all_orders:
         if id == order_id:
             all_orders[id]["name"] = new_order["name"]

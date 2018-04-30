@@ -33,9 +33,6 @@ class Meals(object):
         args["name"] = args["name"].strip()
         self.all_meals[args["id"]] = args
 
-    def get_all_meals(self):
-        """get all meals"""
-        return self.all_meals
 
 from app.v1.meals import meal_instance
 

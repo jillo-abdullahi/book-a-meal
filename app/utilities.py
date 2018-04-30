@@ -1,7 +1,6 @@
 """Functions for use in conducting various checks before proceeding"""
 from flask import jsonify
 from flask_jwt_extended import get_jwt_identity
-from functools import wraps
 
 
 def check_keys(args, length):
@@ -22,11 +21,9 @@ def check_empty_dict(args):
     return False
 
 
-def admin_required(f):
+def check_admin():
     """Check if current user is admin"""
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        current_user = get_jwt_identity()
-        if not current_user['admin']:
-            return jsonify({"message": "Current user is not an admin"}), 400
-    return decorated
+    current_user = get_jwt_identity()
+    if not current_user['admin']:
+        return False
+    return True

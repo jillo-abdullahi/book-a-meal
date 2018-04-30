@@ -1,5 +1,6 @@
 # app/__init__.py
 import os
+from flask import render_template
 from flask_api import FlaskAPI
 from flask_jwt_extended import JWTManager
 
@@ -30,5 +31,10 @@ def create_app(config_name):
     # Register orders blueprint
     from .v1.orders import orders as orders_blueprint
     app.register_blueprint(orders_blueprint, url_prefix='/api/v1')
+
+    @app.route('/')
+    def version2():
+        """route for API documentation"""
+        return render_template('version1.html')
 
     return app
