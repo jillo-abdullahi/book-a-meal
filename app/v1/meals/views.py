@@ -1,12 +1,14 @@
 # v1/meals/views.py
 from flask import request, jsonify
+from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity
 
 # local imports
 from . import meals, meal_instance
-from app.utilities import check_keys, check_empty_dict
+from app.utilities import check_keys, check_empty_dict, admin_required
 
 
 @meals.route("/meals", methods=["POST"])
+@jwt_required
 def caterer_add_new_meal():
     """Test caterer can add new meal"""
     get_meal = request.get_json()
@@ -18,18 +20,24 @@ def caterer_add_new_meal():
         return jsonify({"message": "All fields must be provided"}), 400
 
     all_meals = meal_instance.all_meals
-    for id in all_meals:
-        if get_meal["name"].lower() == all_meals[id]['name'].lower():
-            return jsonify({"message": "Meal already exists"})
 
-    meal_instance.create_meal(get_meal)
+    if all_meals == {}:
+        meal_instance.create_meal(get_meal)
+    else:
+        for id in all_meals:
+            if get_meal["name"].lower() == all_meals[id]['name'].lower():
+                return jsonify({"message": "Meal already exists"})
+            meal_instance.create_meal(get_meal)
 
     return jsonify({"message": "Meal successfully added", "Meals": meal_instance.all_meals}), 201
 
 
 @meals.route("/meals", methods=["GET"])
+@admin_required
 def caterer_get_all_meals():
     """Test caterer can get all meals"""
+    import pdb
+    pdb.set_trace()
     if not meal_instance.all_meals:
         return jsonify({"message": "No meals added yet"}), 204
     return jsonify({"Meals": meal_instance.all_meals}), 200

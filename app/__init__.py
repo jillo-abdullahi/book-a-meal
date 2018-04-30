@@ -1,6 +1,7 @@
 # app/__init__.py
-
+import os
 from flask_api import FlaskAPI
+from flask_jwt_extended import JWTManager
 
 # local import
 from instance.config import app_config
@@ -10,6 +11,9 @@ def create_app(config_name):
     app = FlaskAPI(__name__, instance_relative_config=True)
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('config.py')
+
+    app.config['JWT_SECRET_KEY'] = os.getenv('SECRET')
+    jwt = JWTManager(app)
 
     # Register auth blueprint
     from .v1.auth import auth as auth_blueprint

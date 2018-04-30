@@ -1,5 +1,7 @@
 """v1/auth/views.py"""
 from flask import request, jsonify
+from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity
+
 
 # local import
 from . import auth
@@ -45,14 +47,26 @@ def login_user():
 
     for id in all_users:
         if get_user["username"] == all_users[id]["username"] and get_user["password"] == all_users[id]["password"]:
-            return jsonify({"user": all_users[id], "message": "User authenticated"}), 200
+
+            access_token = create_access_token(identity=all_users[id])
+
+            return jsonify({"user": all_users[id], "message": "User authenticated", "access_token": access_token}), 200
 
     return jsonify({"message": "User was not found"}), 404
 
 
-# @auth.route('/promote/<user_id>', methods=["PUT"])
-# def promote_user_to_admin(user_id):
-# 	"""Method to change a user to admin"""
-#     if user_instance.promote_user(user_id):
-#         return jsonify({"message": "user has been promoted to admin"}), 200
-#     return jsonify({"message": "sorry, user doesn't exist"}), 404
+@auth.route('/promote/<user_id>', methods=["PUT"])
+@jwt_required
+def promote_user_to_admin(user_id):
+    """Function to change a user to admin"""
+    if user_instance.promote_user(user_id):
+        return jsonify({"message": "user has been promoted to admin"}), 200
+    return jsonify({"message": "sorry, user doesn't exist"}), 404
+
+
+@auth.route('/users', methods=['GET'])
+@jwt_required
+def get_all_users():
+    """View function to get all users"""
+    current_users = user_instance.users
+    return jsonify({"All users": current_users}), 200
