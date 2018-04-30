@@ -33,7 +33,9 @@ class TestMealsMenu(unittest.TestCase):
     def set_menu(self):
         """Menu can be set after meal is added"""
         new_menu = {
-            "1": {"name": "Hamburger"}
+            "1": {"name": "Hamburger"},
+            "2": {"name": "Hamburger"},
+
         }
         response = self.app.post('/api/v1/menu',
                                  data=json.dumps(new_menu),
