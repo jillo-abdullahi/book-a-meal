@@ -88,7 +88,7 @@ class TestMealsMenu(unittest.TestCase):
         return response
 
     def login_user(self):
-        """Menu test - login the user to generate a token"""
+        """Meals test - login the user to generate a token"""
         user_login_info = {
             "username": "zayn",
             "password": "check1234"
@@ -100,7 +100,8 @@ class TestMealsMenu(unittest.TestCase):
                                        data=json.dumps(user_login_info),
                                        content_type='application/json')
 
-        access_token = json.loads(login_response.data)['access_token']
+        access_token = json.loads(login_response.get_data(as_text=True))[
+            "access_token"]
 
         headers = dict(Authorization="Bearer {}".format(access_token))
-        return headers['Authorization']
+        return headers["Authorization"]
