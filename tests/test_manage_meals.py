@@ -106,8 +106,8 @@ class TestManageMeals(unittest.TestCase):
                                        data=json.dumps(user_login_info),
                                        content_type='application/json')
 
-        response = json.loads(login_response.data)
-        access_token = response["access_token"]
+        access_token = json.loads(login_response.get_data(as_text=True))[
+            "access_token"]
 
         headers = dict(Authorization="Bearer {}".format(access_token))
         return headers["Authorization"]
