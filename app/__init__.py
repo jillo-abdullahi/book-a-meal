@@ -1,4 +1,4 @@
-# app/__init__.py
+"""app/__init__.py"""
 import os
 from flask import render_template
 from flask_api import FlaskAPI
@@ -33,7 +33,7 @@ def create_app(config_name):
     app.register_blueprint(orders_blueprint, url_prefix='/api/v1')
 
     @app.route('/')
-    def version2():
+    def api_documentation():
         """route for API documentation"""
         return render_template('version1.html')
 
