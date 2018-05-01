@@ -30,7 +30,7 @@ def caterer_add_new_meal():
     else:
         for id in all_meals:
             if get_meal["name"].lower() == all_meals[id]['name'].lower():
-                return jsonify({"message": "Meal already exists"}), 400
+                return jsonify({"message": "Meal already exists"})
         meal_instance.create_meal(get_meal)
 
     return jsonify({"message": "Meal successfully added", "Meals": meal_instance.all_meals}), 201
