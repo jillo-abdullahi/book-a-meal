@@ -33,6 +33,7 @@ def create_app(config_name):
     app.register_blueprint(orders_blueprint, url_prefix='/api/v1')
 
     @app.route('/')
+    @app.route('/favicon.ico')
     def api_documentation():
         """route for API documentation"""
         return render_template('version1.html')
