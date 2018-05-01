@@ -1,0 +1,89 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Book-A-Meal
+  description: >-
+    Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat
+  license:
+    name: MIT
+    url: 'https://github.com/jillo-abdullahi/book-a-meal/blob/ft-auth-endpoints/LICENCE.md'
+host: 'bookameal-api-heroku.herokuapp.com'
+basePath: /api/v1
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /auth/signup:
+    x-summary: Register.
+    post:
+      summary: Register (Sign up) new user
+      description: >-
+        Creates a new user. Once there is no existing user with same name user account is created.
+      parameters:
+        - in: body
+          name: user
+          description: The user to create.
+          schema:
+            $ref: '#/definitions/Register'
+      responses:
+        '201':
+          description: 'User created'
+        '401':
+          description: 'user already exists'
+      tags:
+        - Auth
+  /auth/login:
+    x-summary: Login
+    post:
+      summary: Login registered user
+      description: Login a user who has already been registered
+      parameters:
+        - in: body
+          name: login
+          description: login user.
+          schema:
+            $ref: '#/definitions/Login'
+      responses:
+        '200':
+          description: 'User authenticated'
+        '400':
+          description: 'All fields must be provided'
+        '404':
+          description: 'User was not found'
+      tags:
+        - Auth
+definitions:
+  Register:
+    type: object
+    required:
+      - email
+      - fullname
+      - username
+      - password
+    properties:
+      email:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+    example:
+      email: jayloabdullahi@gmail.com
+      full-name: Jillo Abdullahi
+      username: JilloWoche
+      password: check1234
+  Login:
+    type: object
+    required:
+      - password
+      - username
+    properties:
+      username:
+        type: string
+        default: JilloWoche
+      password:
+        type: string
+        default: check1234
