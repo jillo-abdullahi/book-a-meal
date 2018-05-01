@@ -1,7 +1,9 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*.pyc
 *.py[cod]
 *$py.class
+__init__.pyc
 
 # C extensions
 *.so
@@ -57,7 +59,7 @@ local_settings.py
 db.sqlite3
 
 # Flask stuff:
-instance/
+# instance/
 .webassets-cache
 
 # Scrapy stuff:
