@@ -1,4 +1,5 @@
 """Functions for use in conducting various checks before proceeding"""
+import re
 from flask import jsonify
 from flask_jwt_extended import get_jwt_identity
 
@@ -27,3 +28,38 @@ def check_admin():
     if not current_user['admin']:
         return False
     return True
+
+
+# validations
+username_regex = re.compile("^[a-z0-9_-]{3,15}$")
+password_regex = re.compile("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$")
+email_regex = re.compile("[^@]+@[^@]+\.[^@]+")
+
+
+def validate(data):
+    """Validate email password and username
+    """
+    if check_keys(data, 3):
+        return jsonify({
+            'warning': 'Provide email, username & password'
+        }), 400
+
+    if not data['email'] or not data['password'] or not data['username']:
+        return jsonify({
+            'warning': 'Cannot create user without all information'
+        }), 400
+
+    if not username_regex.match(data['username']):
+        return jsonify({
+            'warning': 'Provide username with more than 4 characters'
+        })
+
+    if not email_regex.match(data['email']):
+        return jsonify({
+            'warning': 'Please provide valid email'
+        })
+
+    if not password_regex.match(data['password']):
+        return jsonify({
+            'warning': 'Please provide strong password'
+        })
