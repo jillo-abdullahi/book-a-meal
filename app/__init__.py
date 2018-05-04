@@ -51,9 +51,9 @@ def create_app(config_name):
     from .v2.menu import menuV2 as menu_blueprint
     app.register_blueprint(menu_blueprint, url_prefix='/api/v2')
 
-    # # Register orders blueprint
-    # from .v2.orders import orders as orders_blueprint
-    # app.register_blueprint(orders_blueprint, url_prefix='/api/v2')
+    # Register orders blueprint
+    from .v2.orders import ordersV2 as orders_blueprint
+    app.register_blueprint(orders_blueprint, url_prefix='/api/v2')
 
     @app.route('/')
     @app.route('/favicon.ico')

@@ -26,7 +26,7 @@ def set_menu():
     if not meal:
         message = "Meal cannot be added because it doesn't exist"
         return jsonify({"error": message})
-    if Menu.query.filter_by(meal_id=meal_id):
+    if Menu.query.filter_by(meal_id=meal_id).first():
         return jsonify({"message": "Meal already exists in the menu"})
 
     menu_item = Menu(name="breakfast", meal_id=meal.id)
@@ -40,10 +40,31 @@ def set_menu():
 @jwt_required
 def get_meals_menu():
     """View function to get menu"""
-    menus = Menu.query.first()
-    if not menus:
+    menu = Menu.query.all()
+    if not menu:
         message = "Menu has not been set"
         return jsonify({"message": message}), 404
 
-    meals = Meals.query.all()
-    return jsonify({"menu": [{'name': meal.name} for meal in meals]})
+    meals_in_menu = []
+    for menu_item in menu:
+        meals_in_menu.append(menu_item.meal_id)
+    all_meals = []
+
+    for meal_id in meals_in_menu:
+        meal = Meals.query.filter_by(id=meal_id).first()
+        all_meals.append(
+            {"name": meal.name, "price": meal.price, "category": meal.category,
+             "description": meal.description})
+    return jsonify({"message": all_meals}), 200
+
+    # # return jsonify([{'name': meal.name} for meal in meals])
+    # meals_in_order = []
+
+    # for order in current_orders:
+    #     meals_in_order.append(order.meals)
+    # all_meals = []
+
+    # for meal_id in meals_in_order:
+    #     meal = Meals.query.filter_by(id=meal_id).first()
+    #     all_meals.append({"name": meal.name, "price": meal.price})
+    # return jsonify({"message": all_meals}), 200

@@ -1,50 +1,89 @@
 """orders/views.py"""
 from flask import request, jsonify
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required,  get_jwt_identity
 
 # local import
-from . import orders, orders_instance
-from app.utilities import check_admin
+from . import ordersV2
+from app.models.modelsV2 import Meals, Orders, Menu
+from app.utilities import check_keys, check_empty_dict, check_admin
 
 
-@orders.route('/orders', methods=['GET'])
+@ordersV2.route('/orders', methods=['GET'])
 @jwt_required
 def get_all_orders():
-    """get all orders for the day"""
+    """View function to get all orders for the day"""
     if not check_admin():
         message = "Current user is not an admin"
         return jsonify({'message': message}), 400
+    current_orders = Orders.query.all()
+    if not current_orders:
+        message = "No orders have been placed yet."
+        return jsonify({"message": message})
+    meals_in_order = []
 
-    if not orders_instance.orders:
-        return jsonify({"message": "No orders found"}), 404
-    return jsonify({"Orders": orders_instance.orders}), 200
+    for order in current_orders:
+        meals_in_order.append(order.meals)
+    all_meals = []
+
+    for meal_id in meals_in_order:
+        meal = Meals.query.filter_by(id=meal_id).first()
+        all_meals.append({"name": meal.name, "price": meal.price})
+    return jsonify({"message": all_meals}), 200
 
 
-@orders.route('/orders', methods=['POST'])
+@ordersV2.route('/orders', methods=['POST'])
 @jwt_required
 def make_an_order():
-    """Customer can place an order"""
+    """View function to place an order"""
     get_order = request.get_json()
 
-    orders_instance.create_order(get_order)
+    meals_in_order = []
 
-    return jsonify({"Orders": orders_instance.orders}), 201
+    for key in get_order:
+        meals_in_order.append(get_order[key])
+
+    for meal_in_order in meals_in_order:
+        meal = Meals.query.filter_by(name=meal_in_order).first()
+        if not meal:
+            message = "{} is not an available meal".format(meal_in_order)
+            return jsonify({"message": message}), 404
+        menu = Menu.query.filter_by(meal_id=meal.id).first()
+        if not menu:
+            message = "{} is not part of today's menu".format(meal.name)
+            return jsonify({"message": message}), 404
+        current_user = get_jwt_identity()
+        order = Orders(meals=meal.id, user_id=current_user["user_id"])
+        order.save()
+
+    return jsonify({"message": "order successfully updated"}), 201
 
 
-@orders.route('/orders/<id>', methods=['PUT'])
+@ordersV2.route('/orders/<order_id>', methods=['PUT'])
 @jwt_required
-def change_order(id):
-    """Customer can change an order"""
+def change_order(order_id):
+    """View function to update an existing order"""
     new_order = request.get_json()
 
-    all_orders = orders_instance.orders
+    meals_in_order = []
 
-    for order_id in all_orders:
-        if id == order_id:
-            all_orders[id]["name"] = new_order["name"]
-            all_orders[id]["category"] = new_order["category"]
-            all_orders[id]["price"] = new_order["price"]
-            all_orders[id]["description"] = new_order["description"]
+    order = Orders.query.filter_by(id=order_id).first()
+    if not order:
+        message = "There is no order with id {}".format(order_id)
+        return jsonify({"message": message}), 404
+    for key in new_order:
+        meals_in_order.append(new_order[key])
+    for meal_in_order in meals_in_order:
+        meal = Meals.query.filter_by(name=meal_in_order).first()
+        if not meal:
+            message = "{} is not an available meal".format(meal_in_order)
+            return jsonify({"message": message}), 404
+        menu = Menu.query.filter_by(meal_id=meal.id).first()
+        if not menu:
+            message = "{} is not part of today's menu".format(meal.name)
+            return jsonify({"message": message}), 404
 
-            return jsonify({"message": "order details successfully changed", "Order": orders_instance.orders}), 200
-    return jsonify({"message": "Order with that id was not found"}), 404
+        order.meals = meal.id
+        order.save()
+
+        message = "order successfully updated"
+        return jsonify({"message": message})

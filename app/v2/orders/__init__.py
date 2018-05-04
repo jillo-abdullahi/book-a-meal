@@ -1,8 +1,8 @@
-"""orders/__init__.py"""
-from flask import Blueprint
-from app.models.models import Orders
+# V2/orders/__init__.py
 
-orders = Blueprint('orders', __name__)
-orders_instance = Orders()
+from flask import Blueprint
+
+orders = Blueprint('orders', __name__)  # Version 1
+ordersV2 = Blueprint('ordersV2', __name__)  # Version 2
 
 from . import views

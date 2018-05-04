@@ -76,6 +76,7 @@ class Orders(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     meals = db.Column(db.Integer, db.ForeignKey('meal.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
 
     def save(self):
         """Commits save instance to the database"""
