@@ -1,6 +1,6 @@
 """Functions for use in conducting various checks before proceeding"""
-import re
 from flask import jsonify
+from functools import wraps
 from flask_jwt_extended import get_jwt_identity
 
 
@@ -23,43 +23,19 @@ def check_empty_dict(args):
 
 
 def check_admin():
-    """Check if current user is admin"""
     current_user = get_jwt_identity()
     if not current_user['admin']:
         return False
     return True
 
 
-# validations
-username_regex = re.compile("^[a-z0-9_-]{3,15}$")
-password_regex = re.compile("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$")
-email_regex = re.compile("[^@]+@[^@]+\.[^@]+")
-
-
-def validate(data):
-    """Validate email password and username
-    """
-    if check_keys(data, 3):
-        return jsonify({
-            'warning': 'Provide email, username & password'
-        }), 400
-
-    if not data['email'] or not data['password'] or not data['username']:
-        return jsonify({
-            'warning': 'Cannot create user without all information'
-        }), 400
-
-    if not username_regex.match(data['username']):
-        return jsonify({
-            'warning': 'Provide username with more than 4 characters'
-        })
-
-    if not email_regex.match(data['email']):
-        return jsonify({
-            'warning': 'Please provide valid email'
-        })
-
-    if not password_regex.match(data['password']):
-        return jsonify({
-            'warning': 'Please provide strong password'
-        })
+def admin_required(f):
+    """Decorator function to check if current user is admin"""
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        current_user = get_jwt_identity()
+        if not current_user['admin']:
+            message = "Sorry, you are not an admin and therefore not allowed to access this page"
+            return jsonify({"message": message}), 401
+        return f(*args, **kwargs)
+    return decorated

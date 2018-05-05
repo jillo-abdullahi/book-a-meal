@@ -12,9 +12,7 @@ from app.utilities import check_keys, check_empty_dict, check_admin
 @jwt_required
 def get_all_orders():
     """View function to get all orders for the day"""
-    if not check_admin():
-        message = "Current user is not an admin"
-        return jsonify({'message': message}), 400
+
     current_orders = Orders.query.all()
     if not current_orders:
         message = "No orders have been placed yet."
@@ -35,7 +33,13 @@ def get_all_orders():
 @jwt_required
 def make_an_order():
     """View function to place an order"""
+    if not check_admin():
+        message = "Current user is not an admin"
+        return jsonify({'message': message}), 400
+
     get_order = request.get_json()
+    if check_keys(get_order, 1):
+        return jsonify({"message": "All fields must be provided"}), 400
 
     meals_in_order = []
 

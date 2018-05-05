@@ -56,15 +56,3 @@ def get_meals_menu():
             {"name": meal.name, "price": meal.price, "category": meal.category,
              "description": meal.description})
     return jsonify({"message": all_meals}), 200
-
-    # # return jsonify([{'name': meal.name} for meal in meals])
-    # meals_in_order = []
-
-    # for order in current_orders:
-    #     meals_in_order.append(order.meals)
-    # all_meals = []
-
-    # for meal_id in meals_in_order:
-    #     meal = Meals.query.filter_by(id=meal_id).first()
-    #     all_meals.append({"name": meal.name, "price": meal.price})
-    # return jsonify({"message": all_meals}), 200
