@@ -51,6 +51,8 @@ Do the following:
 `export APP_SETTINGS="development"`
 8. Set the entry point for the app
 `export FLASK_APP="run.py"`
+9. Set up migration by running `python manage.py db migrate`
+10. Populate the db with tables by running `python manage.py db upgrade`
 
 #### Run the API
 Get the app running by typing
