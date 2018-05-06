@@ -16,16 +16,10 @@ manager.add_command('db', MigrateCommand)
 def createsuperadmin():
     """Create a super admin first"""
     username = os.getenv('DEFAULT_ADMIN_USERNAME')
-    # password = os.getenv('DEFAULT_ADMIN_PASSWORD')
-    # full_name = os.getenv('DEFAULT_ADMIN_FULL_NAME')
-    # admin = os.getenv('DEFAULT_ADMIN_ROLE')
-    # email = os.getenv('DEFAULT_ADMIN_EMAIL')
-
-    username = "super-admin"
-    password = "password"
-    full_name = "super super"
-    admin = True
-    email = "admin@book-a-meal.com"
+    password = os.getenv('DEFAULT_ADMIN_PASSWORD')
+    full_name = os.getenv('DEFAULT_ADMIN_FULL_NAME')
+    admin = os.getenv('DEFAULT_ADMIN_ROLE')
+    email = os.getenv('DEFAULT_ADMIN_EMAIL')
 
     user = User(username=username, password=password,
                 full_name=full_name, admin=admin, email=email)
