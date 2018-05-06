@@ -9,7 +9,7 @@ install:
 # command to run tests
 before_script:
   - psql -c 'create database bookameal_test;' -U postgres
-  - python manage.py db upgrade
+  - flask db upgrade
 script:
   - nosetests --with-coverage --cover-package=app
 branches:
