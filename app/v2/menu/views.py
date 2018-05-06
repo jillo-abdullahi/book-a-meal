@@ -43,7 +43,7 @@ def set_menu():
     menu_item.save()
 
     message = "menu successfully updated"
-    return jsonify({"message": message})
+    return jsonify({"message": message}), 201
 
 
 @menuV2.route('/menu', methods=['GET'])
