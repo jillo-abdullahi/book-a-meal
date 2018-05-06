@@ -68,7 +68,7 @@ def register_new_user():
     user.save()
 
     message = "Success! You have been registered"
-    return jsonify({"message": message}), 200
+    return jsonify({"message": message}), 201
 
 
 @authV2.route('/login', methods=["POST"])
@@ -96,7 +96,7 @@ def login_user():
                 identity={'user_id': user.id, 'admin': user.admin})
 
             return jsonify({"success": message, "access_token": access_token})
-        return jsonify({"message": "Authentication failed, invalid username or password"})
+        return jsonify({"message": "Authentication failed, invalid username or password"}), 401
     except Exception:
         message = "Please provide a username and password"
         return jsonify({"message": message}), 400
