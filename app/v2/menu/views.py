@@ -1,24 +1,34 @@
-"""V2/menu/views.py"""
+"""View functions for all things menu"""
 from flask import request, jsonify
 from flask_jwt_extended import jwt_required
 
 # Local imports
 from . import menuV2
 from app.models.modelsV2 import Meals
-from app.utilities import check_admin
+from app.utilities import admin_required, check_empty_dict, check_keys
 from app.models.modelsV2 import Menu
 
 
 @menuV2.route('/menu', methods=['POST'])
 @jwt_required
+@admin_required
 def set_menu():
     """View function to set menu"""
-    if not check_admin():
-        message = "Current user is not an admin"
-        return jsonify({'message': message}), 400
 
     menu_details = request.get_json()
-    meal_id = int(menu_details['id'])
+
+    if check_keys(menu_details, 1):
+        message = "Please provide just the meal id"
+        return jsonify({"message": message}), 400
+
+    if check_empty_dict(menu_details):
+        message = "Please fill in the id field"
+        return jsonify({"message": message}), 400
+    try:
+        meal_id = int(menu_details['id'])
+    except Exception:
+        message = "Please specify a meal id to add to the menu"
+        return jsonify({"message": message}), 400
 
     # Check if meal exists
     meal = Meals.query.filter_by(id=meal_id).first()
@@ -29,7 +39,7 @@ def set_menu():
     if Menu.query.filter_by(meal_id=meal_id).first():
         return jsonify({"message": "Meal already exists in the menu"})
 
-    menu_item = Menu(name="breakfast", meal_id=meal.id)
+    menu_item = Menu(name="Today's Menu", meal_id=meal.id)
     menu_item.save()
 
     message = "menu successfully updated"

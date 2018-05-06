@@ -16,6 +16,7 @@ def create_app(config_name):
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('config.py')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.url_map.strict_slashes = False
     db.init_app(app)
 
     app.config['JWT_SECRET_KEY'] = os.getenv('SECRET')
