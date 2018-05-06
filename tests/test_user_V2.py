@@ -25,6 +25,8 @@ class TestUserLogin(unittest.TestCase):
             "username": "test_user",
             "password": "password"
         }
+        with self.app.app_context():
+            db.create_all()
 
     def test_successful_registration(self):
         """Test for successful registration"""
@@ -55,5 +57,5 @@ class TestUserLogin(unittest.TestCase):
 
     def tearDown(self):
         with self.app.app_context():
-            db.session.query(User).delete()
-            db.session.commit()
+            db.session.remove()
+            db.drop_all()

@@ -19,6 +19,8 @@ class TestMealsMenu(unittest.TestCase):
                          "description": "Tasty burger",
                          "price": "500",
                          "category": "main meal"}
+        with self.app.app_context():
+            db.create_all()
 
     def test_customer_can_get_menu(self):
         """Function to test if customer can get menu"""
@@ -107,9 +109,5 @@ class TestMealsMenu(unittest.TestCase):
 
     def tearDown(self):
         with self.app.app_context():
-            db.session.query(User).delete()
-            db.session.commit()
-            db.session.query(Menu).delete()
-            db.session.commit()
-            db.session.query(Meals).delete()
-            db.session.commit()
+            db.session.remove()
+            db.drop_all()

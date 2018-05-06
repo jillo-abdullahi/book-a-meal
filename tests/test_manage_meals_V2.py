@@ -24,6 +24,8 @@ class TestManageMeals(unittest.TestCase):
                           "description": "burger",
                           "price": "200",
                           "category": "main meal"}
+        with self.app.app_context():
+            db.create_all()
 
     def test_meal_can_be_deleted_by_caterer(self):
         """Function to test if caterer can delete a meal"""
@@ -135,7 +137,5 @@ class TestManageMeals(unittest.TestCase):
 
     def tearDown(self):
         with self.app.app_context():
-            db.session.query(User).delete()
-            db.session.commit()
-            db.session.query(Meals).delete()
-            db.session.commit()
+            db.session.remove()
+            db.drop_all()
