@@ -66,7 +66,7 @@ def caterer_delete_meal(meal_id):
     meal = Meals.query.filter_by(id=meal_id).first()
     if not meal:
         message = "Meal with id {} was not found".format(meal_id)
-        return jsonify({"Error": message})
+        return jsonify({"Error": message}), 404
 
     meal.delete()
     message = "meal successfully deleted"
