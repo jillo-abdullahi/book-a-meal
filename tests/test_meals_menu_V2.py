@@ -108,6 +108,7 @@ class TestMealsMenu(unittest.TestCase):
         return headers["Authorization"]
 
     def tearDown(self):
+        """Drop all tables after test"""
         with self.app.app_context():
             db.session.remove()
             db.drop_all()

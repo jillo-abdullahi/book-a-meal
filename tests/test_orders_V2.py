@@ -128,6 +128,7 @@ class TestCustomerOrders(unittest.TestCase):
         return headers["Authorization"]
 
     def tearDown(self):
+        """Drop all tables after test has run"""
         with self.app.app_context():
             db.session.remove()
             db.drop_all()
