@@ -55,6 +55,167 @@ paths:
           description: 'User was not found'
       tags:
         - Auth
+  /menu:
+    x-summary: Menu
+    get:
+      summary: Get menu for the day.
+      description: Logged in user can get menu for the day.
+      parameters:
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Menu returned if it has been set'
+        '404':
+          description: 'Menu for the day has not been set yet'
+      tags:
+        - Menu   
+    post:
+      summary: Set menu for the day.
+      description: Admin(caterer) sets the menu for the day.
+      parameters:
+        - in: body
+          name: meal
+          description: meal to be added.
+          schema:
+            $ref: '#/definitions/SetMenu'
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '201':
+          description: 'Menu successfully set'
+        '400':
+          description: 'Current user is not an admin user'
+      tags:
+        - Menu    
+  /meals:
+    x-summary: Meals
+    get:
+      summary: Admin(caterer) can get all meals
+      description: Logged in admin caterer can get all current meals
+      parameters:
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'All existing meals'
+        '404':
+          description: 'There are no existing meals yet'
+      tags:
+        - Meals
+    post:
+      summary: Admin(caterer) can add a new meal
+      description: Logged in admin caterer can add a new meal
+      parameters:
+        - in: body
+          name: meals
+          description: meal details
+          schema:
+            $ref: '#/definitions/AddMeal'
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '201':
+          description: 'Meal successfully added'
+        '400':
+          description: 'Meal already exists'
+      tags:
+        - Meals
+  /meals/<mealid>:
+    x-summary: Menu
+    put:
+      summary: Admin(caterer) can edit a meal
+      description: Logged in admin caterer can edit an existin meal
+      parameters:
+        - in: body
+          name: meal
+          description: details of meal
+          schema:
+            $ref: '#/definitions/EditMeal'
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Meal successfully changed'
+        '400':
+          description: 'Meal already exists'
+      tags:
+        - Meals    
+  /orders:
+    x-summary: Orders
+    get:
+      summary: Admin(caterer) can get all orders
+      description: Logged in admin caterer can get all orders from customers
+      parameters:
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Current orders'
+        '404':
+          description: 'No orders exist'
+      tags:
+        - Orders
+    post:
+      summary: Place an order
+      description: Logged in customer can post an order
+      parameters:
+        - in: body
+          name: meal name
+          description: name of meal
+          schema:
+            $ref: '#/definitions/AddOrder'
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Order successfully added'
+      tags:
+        - Orders
+  /orders/<orderid>:
+    x-summary: Orders
+    put:
+      summary: Customer can edit an order
+      description: Authenticated customer can make changes to an order
+      parameters:
+        - in: body
+          name: meal
+          description: new details of meal
+          schema:
+            $ref: '#/definitions/EditOrder'
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Order successfully changed'
+      tags:
+        - Orders 
+      
+    
 definitions:
   Register:
     type: object
@@ -87,3 +248,64 @@ definitions:
       password:
         type: string
         default: check1234
+  SetMenu:
+    type: object
+    properties:
+      meal-name:
+        type: string
+        default: {"1":{"name": "Hamburger"}}
+  AddMeal:
+    type: object
+    properties:
+      name:
+        type: string
+      price:
+        type: number
+      category:
+        type: string
+      description:
+        type: string
+    example:
+      name: Cheeseburger
+      price: 400
+      category: main meal
+      description: tasty burger
+  EditMeal:
+    type: object
+    properties:
+      name:
+        type: string
+      price:
+        type: number
+      category:
+        type: string
+      description:
+        type: string
+    example:
+      name: Cheeseburger
+      price: 400
+      category: main meal
+      description: tasty burger
+  AddOrder:
+    type: object
+    properties:
+      meal-id:
+        type: string
+        example: {"1":{"name": "Hamburger"}}
+  EditOrder:
+    type: object
+    properties:
+      name:
+        type: string
+      price:
+        type: number
+      category:
+        type: string
+      description:
+        type: string
+    example:
+      name: Cheeseburger
+      price: 400
+      category: main meal
+      description: tasty burger
+      
