@@ -13,7 +13,6 @@ install:
 before_script:
   - psql -c 'create database bookameal_test;' -U postgres
   - psql -c "create user samauser with password 'samauser';" -U postgres
-  - flask db upgrade
 script:
   - nosetests --with-coverage --cover-package=app
 branches:
