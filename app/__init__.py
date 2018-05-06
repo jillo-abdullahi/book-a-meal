@@ -60,6 +60,6 @@ def create_app(config_name):
     @app.route('/favicon.ico')
     def api_documentation():
         """route for API documentation"""
-        return render_template('version1.html')
+        return render_template('version2.html')
 
     return app
