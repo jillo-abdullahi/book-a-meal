@@ -1,0 +1,311 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Book-A-Meal
+  description: >-
+    Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat
+  license:
+    name: MIT
+    url: 'https://github.com/jillo-abdullahi/book-a-meal/blob/ft-auth-endpoints/LICENCE.md'
+host: 'bookameal-api-heroku.herokuapp.com'
+basePath: /api/v1
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /auth/signup:
+    x-summary: Register.
+    post:
+      summary: Register (Sign up) new user
+      description: >-
+        Creates a new user. Once there is no existing user with same name user account is created.
+      parameters:
+        - in: body
+          name: user
+          description: The user to create.
+          schema:
+            $ref: '#/definitions/Register'
+      responses:
+        '201':
+          description: 'User created'
+        '401':
+          description: 'user already exists'
+      tags:
+        - Auth
+  /auth/login:
+    x-summary: Login
+    post:
+      summary: Login registered user
+      description: Login a user who has already been registered
+      parameters:
+        - in: body
+          name: login
+          description: login user.
+          schema:
+            $ref: '#/definitions/Login'
+      responses:
+        '200':
+          description: 'User authenticated'
+        '400':
+          description: 'All fields must be provided'
+        '404':
+          description: 'User was not found'
+      tags:
+        - Auth
+  /menu:
+    x-summary: Menu
+    get:
+      summary: Get menu for the day.
+      description: Logged in user can get menu for the day.
+      parameters:
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Menu returned if it has been set'
+        '404':
+          description: 'Menu for the day has not been set yet'
+      tags:
+        - Menu   
+    post:
+      summary: Set menu for the day.
+      description: Admin(caterer) sets the menu for the day.
+      parameters:
+        - in: body
+          name: meal
+          description: meal to be added.
+          schema:
+            $ref: '#/definitions/SetMenu'
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '201':
+          description: 'Menu successfully set'
+        '400':
+          description: 'Current user is not an admin user'
+      tags:
+        - Menu    
+  /meals:
+    x-summary: Meals
+    get:
+      summary: Admin(caterer) can get all meals
+      description: Logged in admin caterer can get all current meals
+      parameters:
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'All existing meals'
+        '404':
+          description: 'There are no existing meals yet'
+      tags:
+        - Meals
+    post:
+      summary: Admin(caterer) can add a new meal
+      description: Logged in admin caterer can add a new meal
+      parameters:
+        - in: body
+          name: meals
+          description: meal details
+          schema:
+            $ref: '#/definitions/AddMeal'
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '201':
+          description: 'Meal successfully added'
+        '400':
+          description: 'Meal already exists'
+      tags:
+        - Meals
+  /meals/<mealid>:
+    x-summary: Menu
+    put:
+      summary: Admin(caterer) can edit a meal
+      description: Logged in admin caterer can edit an existin meal
+      parameters:
+        - in: body
+          name: meal
+          description: details of meal
+          schema:
+            $ref: '#/definitions/EditMeal'
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Meal successfully changed'
+        '400':
+          description: 'Meal already exists'
+      tags:
+        - Meals    
+  /orders:
+    x-summary: Orders
+    get:
+      summary: Admin(caterer) can get all orders
+      description: Logged in admin caterer can get all orders from customers
+      parameters:
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Current orders'
+        '404':
+          description: 'No orders exist'
+      tags:
+        - Orders
+    post:
+      summary: Place an order
+      description: Logged in customer can post an order
+      parameters:
+        - in: body
+          name: meal name
+          description: name of meal
+          schema:
+            $ref: '#/definitions/AddOrder'
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Order successfully added'
+      tags:
+        - Orders
+  /orders/<orderid>:
+    x-summary: Orders
+    put:
+      summary: Customer can edit an order
+      description: Authenticated customer can make changes to an order
+      parameters:
+        - in: body
+          name: meal
+          description: new details of meal
+          schema:
+            $ref: '#/definitions/EditOrder'
+        - name: access-token
+          in: header
+          description: Auth token in header
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Order successfully changed'
+      tags:
+        - Orders 
+      
+    
+definitions:
+  Register:
+    type: object
+    required:
+      - email
+      - fullname
+      - username
+      - password
+    properties:
+      email:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+    example:
+      email: jayloabdullahi@gmail.com
+      full-name: Jillo Abdullahi
+      username: JilloWoche
+      password: check1234
+  Login:
+    type: object
+    required:
+      - password
+      - username
+    properties:
+      username:
+        type: string
+        default: JilloWoche
+      password:
+        type: string
+        default: check1234
+  SetMenu:
+    type: object
+    properties:
+      meal-name:
+        type: string
+        default: {"1":{"name": "Hamburger"}}
+  AddMeal:
+    type: object
+    properties:
+      name:
+        type: string
+      price:
+        type: number
+      category:
+        type: string
+      description:
+        type: string
+    example:
+      name: Cheeseburger
+      price: 400
+      category: main meal
+      description: tasty burger
+  EditMeal:
+    type: object
+    properties:
+      name:
+        type: string
+      price:
+        type: number
+      category:
+        type: string
+      description:
+        type: string
+    example:
+      name: Cheeseburger
+      price: 400
+      category: main meal
+      description: tasty burger
+  AddOrder:
+    type: object
+    properties:
+      meal-id:
+        type: string
+        example: {"1":{"name": "Hamburger"}}
+  EditOrder:
+    type: object
+    properties:
+      name:
+        type: string
+      price:
+        type: number
+      category:
+        type: string
+      description:
+        type: string
+    example:
+      name: Cheeseburger
+      price: 400
+      category: main meal
+      description: tasty burger
+      

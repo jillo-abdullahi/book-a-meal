@@ -1,0 +1,29 @@
+sudo: false
+language: python
+python:
+  - "3.5"
+services:
+  - postgresql
+# command to install dependencies
+install:
+  - "pip install -r requirements.txt"
+  - "pip install coveralls"
+# command to run tests
+before_script:
+  - psql -c 'create database bookameal_test;' -U postgres
+  - psql -c "create user samauser with password 'samauser';" -U postgres
+script:
+  - nosetests --with-coverage --cover-package=app
+branches:
+  only:
+  - ft-auth-endpoints
+  - develop
+  - master
+after_success:
+  - coveralls
+
+notifications:
+  slack:
+    on_success: never
+    on_failure: never
+  email: false
