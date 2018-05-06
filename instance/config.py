@@ -12,7 +12,7 @@ class Config(object):
 class TestingConfig(Config):
     """Configurations for Testing, with a separate test database."""
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bookameal_test'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://samauser:samauser@localhost/bookameal_test'
     DEBUG = True
 
 
